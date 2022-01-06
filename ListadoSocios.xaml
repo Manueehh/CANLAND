@@ -1,0 +1,617 @@
+﻿<Window x:Class="ProyectoIPO.ListadoSocios"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoIPO"
+        mc:Ignorable="d"
+        Title="ListadoSocios" Height="850" Width="1200" Background="{x:Null}" Foreground="{x:Null}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*"/>
+            <RowDefinition Height="32*"/>
+            <RowDefinition Height="145*"/>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="71*"/>
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="309*"/>
+            <ColumnDefinition Width="793*"/>
+            <ColumnDefinition Width="51*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Fill="#FFFAE8D5" HorizontalAlignment="Left" Height="820" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Top" Width="1194" Margin="0,0,-0.4,0" Grid.ColumnSpan="4" Grid.RowSpan="7"/>
+        <ListBox Grid.Row="2"
+                 Grid.Column="1"
+                 Margin="10.2,47.991,9.6,8.209"
+                 x:Name="lstSocios"
+                 HorizontalContentAlignment="Left" Grid.RowSpan="4"
+                 ItemsSource="{Binding}" SelectionChanged="lstSocios_SelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="imgVoluntario"
+                               Width="65"
+                               Height="65"
+                               Source="{Binding foto}"/>
+                        <TextBlock x:Name="VoluntarioNombre"
+                                   Margin="10,0,0,0"
+                                   FontSize="22"
+                                   Text="{Binding nombre}"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Margin" Value="2"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="Foreground" Value="Blue"/>
+                            <Setter Property="FontWeight" Value="Bold"/>
+                            <Setter Property="BorderBrush" Value="Blue"/>
+                            <Setter Property="BorderThickness" Value="3"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
+        </ListBox>
+        <GroupBox x:Name="grpBoxDatos" Grid.Row="2"
+                  Grid.Column="2" BorderBrush="{x:Null}"
+                  BorderThickness="0"
+                  Margin="31.4,4.991,10.4,9.409">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/informacion-personal.png"
+                           Margin="5,0"
+                           Height="32"
+                           Width="32"/>
+                    <TextBlock x:Name="headergrpboxDatos" FontWeight="Bold"
+                               Text="Datos Personales"
+                               VerticalAlignment="Center" Foreground="Black"/>
+                </StackPanel>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="35*"/>
+                    <ColumnDefinition Width="144*"/>
+                    <ColumnDefinition Width="298*"/>
+                    <ColumnDefinition Width="229*"/>
+                    <ColumnDefinition Width="34*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="9*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    Grid.RowSpan="7"
+                    CornerRadius="10" Margin="0,0,0,-8" Grid.ColumnSpan="5"/>
+                <TextBlock x:Name="txtHide" Visibility="Hidden"
+                           Text="{Binding SelectedItem.foto, ElementName=lstSocios}"/>
+                <Label x:Name="lblNombre"  Grid.Row="1"
+                        Grid.Column="1"
+                        Height="Auto"
+                        Margin="5"
+                        Background="#FFF7EBD3"                        
+                        VerticalContentAlignment="Center" BorderBrush="Black"
+                        ToolTip="Nombre del socio">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/nombre.png"
+                               Height="20"
+                               Width="20"
+                               Margin="5,-3,0,-3"/>
+                        <TextBlock Text="Nombre"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Label>
+                <Border Grid.Row="1"
+                        Grid.Column="3"
+                        Grid.RowSpan="5"
+                        Grid.ColumnSpan="2"
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        Margin="0,0,10,0"/>
+                <Image x:Name="imgVoluntario" Grid.Row="1"
+                       Margin="23,20,0,20"
+                       Grid.Column="3"
+                       Grid.RowSpan="5"
+                       Source="{Binding SelectedItem.foto, ElementName=lstSocios}"
+                       Height="Auto"
+                       Width="Auto"/>
+                <Image x:Name="imgRelleno" Grid.Row="5"
+                       Grid.Column="2"
+                       Margin="101.8,4.6,141.8,7.2"/>
+                <TextBox Grid.Row="1"
+                         Grid.Column="2"
+                         Margin="5"
+                         FontSize="20"
+                         x:Name="txtNombre"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding SelectedItem.nombre, ElementName=lstSocios}" PreviewTextInput="txtNombre_PreviewTextInput"/>
+                <Label x:Name="lblApellido"  Grid.Row="2"
+                        Grid.Column="1"
+                        Height="Auto"
+                        Margin="5"
+                        Background="#FFF7EBD3"
+                        ToolTip="Apellido del socio"
+                         VerticalContentAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/nombre.png"
+                               Height="20"
+                               Width="20"
+                               Margin="5,-3,0,-3"/>
+                        <TextBlock Text="Apellido"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Label>
+                <TextBox Grid.Row="2"
+                         Grid.Column="2"
+                         Margin="5"
+                         FontSize="20"
+                         x:Name="txtApellido"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding SelectedItem.apellido, ElementName=lstSocios}" PreviewTextInput="txtApellido_PreviewTextInput"/>
+                <Label x:Name="lblEdad"  Grid.Row="3"
+                        Grid.Column="1"
+                        Height="Auto"
+                        Margin="5"
+                        Background="#FFF7EBD3"
+                       ToolTip="Edad del socio, escriba solo números"
+                         VerticalContentAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/circular-line-with-word-age-in-the-center.png"
+                               Height="20"
+                               Width="20"
+                               Margin="5,-3,0,-3"/>
+                        <TextBlock Text="Edad"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Label>
+                <TextBox Grid.Row="3"
+                         Grid.Column="2"
+                         Margin="5,5,201,5"
+                         FontSize="20"
+                         x:Name="txtEdad"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding SelectedItem.edad, ElementName=lstSocios}" PreviewTextInput="txtEdad_PreviewTextInput" MaxLines="2" MaxLength="2"/>
+                <Label x:Name="lblDNI"  Grid.Row="4"
+                        Grid.Column="1"
+                        Height="Auto"
+                        Margin="5"
+                        Background="#FFF7EBD3"
+                        ToolTip="DNI del socio"
+                         VerticalContentAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/carne-de-identidad.png"
+                               Height="20"
+                               Width="20"
+                               Margin="5,-3,0,-3"/>
+                        <TextBlock Text="DNI"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Label>
+                <TextBox Grid.Row="4"
+                         Grid.Column="2"
+                         Margin="4.8,5.4,141.8,5.4"
+                         FontSize="20"
+                         x:Name="txtDNI"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding SelectedItem.DNI, ElementName=lstSocios}" MaxLines="9"  MaxLength="9" KeyUp="txtDNI_KeyUp"/>
+                <Label x:Name="lblFotografia"  Grid.Row="5"
+                        Grid.Column="1"
+                        Height="Auto"
+                        Margin="5"
+                        Background="#FFF7EBD3"
+                         VerticalContentAlignment="Center"
+                        ToolTip="Asegurese de que la imagen que quiere visualizar esté en la carpeta de Imagenes">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/camera.png"
+                               Height="20"
+                               Width="20"
+                               Margin="5,-3,0,-3"/>
+                        <TextBlock Text="Fotografía"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Label>
+                <Button x:Name="btnFotoAnadir" Grid.Row="5"
+                        Grid.Column="2"
+                        Margin="5.8,5.6,200.8,6.2"
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        Background="#FFFF715B" Click="btnFotoAnadir_Click"
+                        IsEnabled="True"
+                        ToolTip="Pulse para añadir la fotografía del socio">
+                    <Image Source="Resources/anadir.png"/>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="grpBoxContacto" Grid.Row="3"
+                  Grid.Column="2"
+                  Margin="31.4,0.591,147.4,8.809" BorderBrush="{x:Null}" BorderThickness="0">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/mensaje-de-telefono.png"
+                           Margin="5,0"
+                           Height="32"
+                           Width="32"/>
+                    <TextBlock x:Name="headergrpboxContacto" FontWeight="Bold"
+                               Text="Datos de Contacto"
+                               VerticalAlignment="Center" Foreground="Black"/>
+                </StackPanel>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="26*"/>
+                    <ColumnDefinition Width="144*"/>
+                    <ColumnDefinition Width="379*"/>
+                    <ColumnDefinition Width="26*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    Grid.RowSpan="4"
+                    CornerRadius="10" Margin="0,0,0,-8" Grid.ColumnSpan="4"/>
+                <Label x:Name="lblCorreo"  Grid.Row="1"
+                        Grid.Column="1"
+                        Height="Auto"
+                        Margin="5"
+                        Background="#FFF7EBD3"
+                       ToolTip="Email del socio"
+                        VerticalContentAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/correo-electronico-vacio.png"
+                               Height="20"
+                               Width="20"
+                               Margin="5,0,0,0"/>
+                        <TextBlock Text="Email"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Margin="10,0,0,0"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Label>
+                <TextBox Grid.Row="1"
+                         Grid.Column="2"
+                         Margin="5"
+                         FontSize="20"
+                         x:Name="txtCorreo"
+                         VerticalContentAlignment="Center"
+                         Text="{Binding SelectedItem.Correo, ElementName=lstSocios}"
+                          KeyUp="txtCorreo_KeyUp"/>
+                <Label x:Name="lblTelefono"  Grid.Row="2"
+                        Grid.Column="1"
+                        Height="Auto"
+                        Margin="5"
+                        Background="#FFF7EBD3"
+                       ToolTip="Teléfono del socio, escriba solo números"
+                        VerticalContentAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/llamada-telefonica.png"
+                               Height="20"
+                               Width="20"
+                               Margin="5,0,0,0"/>
+                        <TextBlock Text="Teléfono"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Margin="10,0,0,0"/>
+                    </StackPanel>
+                </Label>
+                <TextBox Grid.Row="2"
+                         Grid.Column="2"
+                         Margin="5,5,202,5"
+                         FontSize="20"
+                         x:Name="txtTelefono"
+                         
+                         VerticalContentAlignment="Center"
+                         Text="{Binding SelectedItem.telefono, ElementName=lstSocios}" PreviewTextInput="txtTelefono_PreviewTextInput" MaxLines="9" MaxLength="9"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="grpBoxBancaria" Grid.Row="3"
+                  Grid.Column="2"
+                  Margin="31.4,142,265.4,8.4" BorderBrush="{x:Null}" BorderThickness="0" Grid.RowSpan="2">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/disponibilidad.png"
+                           Margin="5,0"
+                           Height="32"
+                           Width="32"/>
+                    <TextBlock x:Name="headergrpboxBancaria" FontWeight="Bold"
+                               Text="Datos Bancarios"
+                               VerticalAlignment="Center" Foreground="Black"/>
+                </StackPanel>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="23*"/>
+                    <ColumnDefinition Width="152*"/>
+                    <ColumnDefinition Width="227*"/>
+                    <ColumnDefinition Width="34*"/>
+                    <ColumnDefinition Width="28*"/>
+                    <ColumnDefinition Width="20*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="4*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="39*"/>
+                    <RowDefinition Height="0*"/>
+                </Grid.RowDefinitions>
+                <Image Grid.Row="2"
+                       Grid.Column="2"
+                       Margin="152.8,5,40.4,9.6"
+                       Source="/Resources/euro.png"/>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    Grid.RowSpan="4"
+                    CornerRadius="10" Margin="0,0,0,-7.4" Grid.ColumnSpan="6"/>
+                <Label x:Name="lblCuentaBanco"  Grid.Row="1"
+                        Grid.Column="1"
+                        Height="Auto"
+                        Margin="3.8,5.4,4.2,5"
+                        Background="#FFF7EBD3"
+                       ToolTip="Cuenta bancaria del socio"
+                        VerticalContentAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/libreta-de-depositos.png"
+                               Height="20"
+                               Width="20"
+                               Margin="5,0,0,0"/>
+                        <TextBlock Text="Cuenta"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Margin="10,0,0,0"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Label>
+                <TextBox Grid.Row="1"
+                         Grid.Column="2"
+                         Margin="5.8,5.4,0,5"
+                         FontSize="20"
+                         x:Name="txtCuenta"
+                         Text="{Binding ElementName=lstSocios, Path=SelectedItem.cuenta}"
+                         VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+                <Label x:Name="lblCuantia"  Grid.Row="2"
+                        Grid.Column="1"
+                        Height="Auto"
+                        Margin="3.8,5,4.2,5.6"
+                        Background="#FFF7EBD3"
+                       ToolTip="Cuantía que aporta el socio"
+                        VerticalContentAlignment="Center">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="Resources/dinero.png"
+                               Height="20"
+                               Width="20"
+                               Margin="5,0,0,0"/>
+                        <TextBlock Text="Cuantía"
+                                   VerticalAlignment="Center"
+                                   FontSize="16"
+                                   Margin="10,0,0,0"
+                                   HorizontalAlignment="Center"/>
+                    </StackPanel>
+                </Label>
+                <TextBox Grid.Row="2"
+                         Grid.Column="2"
+                         Margin="5.8,5,86.4,5.6"
+                         FontSize="20"
+                         x:Name="txtCuantia"
+                         Text="{Binding ElementName=lstSocios, Path=SelectedItem.cuantia}"
+                         VerticalContentAlignment="Center" PreviewTextInput="txtCuantia_PreviewTextInput"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="grpBoxGestion" Grid.Row="5"
+                  Grid.Column="2"
+                  Margin="31.4,1.791,0.4,2.209" BorderBrush="{x:Null}" BorderThickness="0">
+            <GroupBox.Header>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="Resources/gestion.png"
+                           Margin="5,0"
+                           Height="32"
+                           Width="32"/>
+                    <TextBlock x:Name="headergrpboxGestion" FontWeight="Bold"
+                               Text="Opciones de gestión"
+                               VerticalAlignment="Center" Foreground="Black"/>
+                </StackPanel>
+            </GroupBox.Header>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="51*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    CornerRadius="10" Margin="0,0,0,0" Grid.ColumnSpan="6"/>
+                <Button x:Name="btnAnadir"
+                        Grid.Column="1"
+                        Margin="5,8,5,8"
+                        Background="#FFFF715B"
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        ToolTip="Pulsa para añadir un socio a la protectora" Click="btnAnadir_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0,0,5,0"
+                               Height="30"
+                               Width="30"
+                               Source="Resources/anadir.png"/>
+                        <TextBlock Text="Añadir"
+                           FontSize="24"
+                           FontWeight="Bold"
+                                   Margin="0,0,20,0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" 
+                           Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnEditar"
+                        Grid.Column="2"
+                        Margin="5,8,5,8"
+                        Background="#FFFF715B"
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        ToolTip="Pulsa para editar los datos de un voluntario" Click="btnEditar_Click" IsEnabled="False">
+                    <StackPanel Orientation="Horizontal">
+                        <Image x:Name="imgEditar"
+                            Margin="0,0,5,0"
+                               Height="30"
+                               Width="30"
+                               Source="Resources/editar.png"/>
+                        <TextBlock x:Name="txtEditar"
+                            Text="Editar"
+                           FontSize="24"
+                           FontWeight="Bold"
+                                   Margin="0,0,20,0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" 
+                           Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnEliminar"
+                        Grid.Column="3"
+                        Margin="5,8,5,8"
+                        Background="#FFFF715B"
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        ToolTip="Pulsa para eliminar a un socio de la protectora" Click="btnEliminar_Click" IsEnabled="False">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0,0,5,0"
+                               Height="30"
+                               Width="30"
+                               Source="Resources/bin.png"/>
+                        <TextBlock Text="Eliminar"
+                           FontSize="24"
+                           FontWeight="Bold"
+                                   Margin="0,0,20,0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" 
+                           Foreground="White"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="btnLimpiar"
+                        Grid.Column="4"
+                        Margin="5,8,5,8"
+                        Background="#FFFF715B"
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        ToolTip="Pulsa para limpiar los campos de escritura y habilitar el botón de añadido" Click="btnLimpiar_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Margin="0,0,5,0"
+                               Height="30"
+                               Width="30"
+                               Source="Resources/broom.png"/>
+                        <TextBlock Text="Limpiar"
+                           FontSize="24"
+                           FontWeight="Bold"
+                                   Margin="0,0,20,0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" 
+                           Foreground="White"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="grpBoxUsuario"
+                  Grid.Column="2"
+                  BorderThickness="0" Margin="468.4,4.8,5.4,287" Grid.Row="1" Grid.RowSpan="2">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="24*"/>
+                    <RowDefinition Height="24*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="103*"/>
+                    <ColumnDefinition Width="148*"/>
+                </Grid.ColumnDefinitions>
+                <Border
+                    BorderBrush="Black"
+                    BorderThickness="3"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="2"
+                    CornerRadius="10">
+                </Border>
+                <Label x:Name="lblusuario" Grid.Row="0"
+                           Content="Usuario:"
+                           Margin="25,8,0,1.2"
+                           FontWeight="Bold"
+                           VerticalContentAlignment="Center"
+                           FontSize="14"
+                       Background="#FFF7EBD3"
+                           HorizontalAlignment="Left" Height="30" Width="101"/>
+                <Label x:Name="lblUF" Grid.Row="1"
+                           Content="Ultima fecha:"
+                           Margin="25,6.8,0,6.4"
+                           FontWeight="Bold"
+                           VerticalContentAlignment="Center"
+                           FontSize="14"
+                       Background="#FFF7EBD3"
+                           HorizontalAlignment="Left" Width="101"/>
+                <TextBox x:Name="txtUser"
+                         Grid.Row="0"
+                         Margin="4.6,7,20.2,1.2"
+                         IsReadOnly="True"
+                         VerticalAlignment="Center"
+                         FontSize="14"
+                         Grid.Column="1" Height="31"
+                         VerticalContentAlignment="Center"/>
+                <TextBox x:Name="txtUF"
+                         Grid.Row="1"
+                         Margin="4.6,5.8,20.2,6.4"
+                         IsReadOnly="True"
+                         VerticalAlignment="Center"
+                         FontSize="14"
+                         Text="15/12/2021"
+                    Grid.Column="1" Height="27"
+                    VerticalContentAlignment="Center"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="btnAtras" Grid.Row="1"
+                Grid.Column="1"
+                Margin="10.2,19.991,149.6,3.009"
+                Background="#FFFF715B"
+                BorderBrush="Black"
+                BorderThickness="3"
+                ToolTip="Pulsa para volver al menú de selección de gestión" Click="btnAtras_Click">
+            <StackPanel Orientation="Horizontal">
+                <Image Margin="0,0,5,-2"
+                               Height="30"
+                               Width="30"
+                               Source="Resources/back.png"/>
+                <TextBlock Text="Atrás"
+                           FontSize="24"
+                           FontWeight="Bold"
+                                   Margin="0,0,20,0"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center" 
+                           Foreground="White"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>

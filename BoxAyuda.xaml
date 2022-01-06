@@ -1,0 +1,117 @@
+﻿<Window x:Class="ProyectoIPO.BoxAyuda"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoIPO"
+        mc:Ignorable="d"
+        Title="Mensaje de ayuda" Height="279.867" Width="436.8" Background="{x:Null}" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="159*"/>
+            <ColumnDefinition Width="172*"/>
+            <ColumnDefinition Width="31*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="25*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="36*"/>
+            <RowDefinition Height="35*"/>
+            <RowDefinition Height="15*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Fill="#FFF9CFA3" HorizontalAlignment="Left" Height="250" RadiusY="10" RadiusX="10" Stroke="Black" VerticalAlignment="Top" Width="430" Grid.RowSpan="7" Grid.ColumnSpan="4"/>
+        <Label Grid.Row="0"
+               Grid.ColumnSpan="2"
+               Margin="70.8,10,70.4,0"
+               Content="Información de la aplicación"
+               HorizontalContentAlignment="Center"
+                Background="#FFF7EBD3"
+               FontWeight="Bold" Grid.Column="1"/>
+        <Label Grid.Row="2"
+               Grid.Column="1"
+               Margin="4.8,4.4,2.4,2.6"
+               Background="#FFF7EBD3"
+               HorizontalContentAlignment="Left"
+               VerticalContentAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Image Height="18"
+                       Width="18"
+                       Source="/Resources/nombre.png"/>
+                <TextBlock Text="Nombre"
+                           Margin="10,0,0,0"
+                           FontSize="14"/>
+            </StackPanel>
+        </Label>
+        <TextBox Grid.Row="2" Grid.Column="2"
+                 Margin="9.6,4.4,20.4,2.6"
+                 VerticalContentAlignment="Center"
+                 Text="Manuel Avilés Rodríguez"
+                 IsReadOnly="True"/>
+        <Label Grid.Row="3"
+               Grid.Column="1"
+               Margin="4.8,4.4,2.4,1.6"
+               Background="#FFF7EBD3"
+               HorizontalContentAlignment="Left"
+               VerticalContentAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Image Height="18"
+                       Width="18"
+                       Source="/Resources/nombre.png"/>
+                <TextBlock Text="Fecha realización"
+                           Margin="10,0,0,0"
+                           FontSize="14"/>
+            </StackPanel>
+        </Label>
+        <TextBox Grid.Row="3"
+                 Grid.Column="2"
+                 Margin="9.6,4.4,90.4,1.6"
+                 VerticalContentAlignment="Center"
+                 Text="03/01/2022"
+                 IsReadOnly="True"/>
+        <Label Grid.Row="4"
+               Grid.Column="1"
+               Margin="4.8,4.4,2.4,2.6"
+               Background="#FFF7EBD3"
+               HorizontalContentAlignment="Left"
+               VerticalContentAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Image Height="18"
+                       Width="18"
+                       Source="/Resources/nombre.png"/>
+                <TextBlock Text="Versión"
+                           Margin="10,0,0,0"
+                           FontSize="14"/>
+            </StackPanel>
+        </Label>
+        <TextBox Grid.Row="4"
+                 Grid.Column="2"
+                 Margin="9.6,4.4,135.4,1.6"
+                 VerticalContentAlignment="Center"
+                 Text="1.0"
+                 IsReadOnly="True"/>
+        <Button Grid.Row="5"
+                Grid.Column="1"
+                Grid.ColumnSpan="2"
+                Margin="99.8,9.4,99.4,15"
+                Background="#FFFF715B"
+                BorderBrush="Black"
+                BorderThickness="2.5" Click="Button_Click" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <Image Width="20"
+                       Height="20"
+                       Source="/Resources/like.png"
+                       VerticalAlignment="Center"/>
+                <TextBlock Text="Ok"
+                           Margin="10,0,0,0"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           FontSize="16"
+                           VerticalAlignment="Center"/>
+            </StackPanel>
+        </Button>
+    </Grid>
+</Window>
