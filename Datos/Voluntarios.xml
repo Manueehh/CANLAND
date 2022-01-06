@@ -1,0 +1,8 @@
+<Voluntarios>
+	<Voluntario nombre="Manuel" apellido="Avilés" edad="21" Correo="Manuel.Aviles@alu.uclm.es" DNI="06290278P" telefono="619276132" foto="Imagenes/voluntario0.jpeg" horario="10:00-14:00,15:00-19:00" zona="Ciudad Real,Villafranca"/>
+	<Voluntario nombre="Laura" apellido="Bárcenas" edad="22" Correo="Laura.Barcenas@alu.uclm.es" DNI="07527461V" telefono="634187305" foto="Imagenes/voluntario1.png" horario="11:00-13:00,15:30-18:30" zona="Ciudad Real"/>
+	<Voluntario nombre="Celia" apellido="Díaz" edad="21" Correo="Celia.Diaz@alu.uclm.es" DNI="07593789B" telefono="645210957" foto="Imagenes/voluntario2.jpeg" horario="10:00-14:00" zona="Ciudad Real,Daimiel"/>
+	<Voluntario nombre="Elena" apellido="Martín" edad="20" Correo="Elena.Martin@alu.uclm.es" DNI="05639175C" telefono="668507423" foto="Imagenes/voluntario3.jpeg" horario="15:30-18:30" zona="Ciudad Real,Almagro"/>
+	<Voluntario nombre="María" apellido="Blanco" edad="21" Correo="Maria.Blanco@alu.uclm.es" DNI="07449756M" telefono="658209758" foto="Imagenes/voluntario4.jpeg" horario="15:00-18:45" zona="Ciudad Real,Daimiel"/>
+	<Voluntario nombre="Carolina" apellido="Carpio" edad="22" Correo="Carolina.Carpio@alu.uclm.es" DNI="07542216H" telefono="674361280" foto="Imagenes/voluntario5.jpeg" horario="16:00-20:45" zona="Ciudad Real"/>
+</Voluntarios>

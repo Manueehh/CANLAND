@@ -1,0 +1,4 @@
+<Perros>
+	<Perro nombre="Toby" foto="Imagenes/perro0.png" genero="Macho" raza="Labrador" tamano="30" peso="15,0" edad="10" datosInteresantes="Toby es un perro calmado y tranquilo, muy hogareño que no busca ningun problema con otros perros" esterilizado="false" vacunado="true" PPP="false" Padrino="false" nombrePadrino="" aportacion="0.0" telefono="0"/>
+	<Perro nombre="Smiley" foto="Imagenes/perro1.png" genero="Macho" raza="Pitbull" tamano="70" peso="45,5" edad="32" datosInteresantes="Smiley es un perro siempre feliz, como se ve en su foto le gusta sonreir y es muy amistoso y activo" esterilizado="true" vacunado="true" PPP="false" Padrino="true" nombrePadrino="Manuel" aportacion="200,00" telefono="619276132"/>
+</Perros>

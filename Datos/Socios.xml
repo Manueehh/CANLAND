@@ -1,0 +1,5 @@
+<Socios>
+	<Socio nombre="Ana Isabel" apellido="Molina" edad="37" Correo="AnaIsabel.Molina@uclm.es" DNI="07542759P" telefono="643285015" foto="Imagenes/socio0.png" cuenta="05749176905838694" cuantia="445,32"/>
+	<Socio nombre="Juan" apellido="Roig" edad="72" Correo="JuanRoig@mercadona.es" DNI="04527691R" telefono="625167349" foto="Imagenes/socio1.png" cuenta="44543567765678534112" cuantia="1000,50"/>
+	<Socio nombre="Bill" apellido="Gates" edad="66" Correo="BillGates@business.com" DNI="75491042J" telefono="652417509" foto="Imagenes/socio2.png" cuenta="442577345784247356" cuantia="1500,00"/>
+</Socios>
